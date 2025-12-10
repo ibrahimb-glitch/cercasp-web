@@ -1,6 +1,7 @@
 {
-  "installCommand": "yarn install",
-  "buildCommand": "yarn build",
-  "outputDirectory": ".next",
-  "framework": "nextjs"
+  "installCommand": "cd ../.. && yarn install --ignore-engines",
+  "buildCommand": "cd ../.. && yarn turbo run build --filter=@cercasp/web",
+  "devCommand": "yarn dev",
+  "framework": "nextjs",
+  "outputDirectory": ".next"
 }
