@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: api
+    runtime: node
+    buildCommand: yarn build
+    startCommand: yarn start:prod
+    envVars:
+      - key: DATABASE_URL
+        value: postgres://...

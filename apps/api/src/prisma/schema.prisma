@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Interno {
+  id          Int      @id @default(autoincrement())
+  initials    String   @encrypted
+  admissionDate DateTime
+  // other fields
+}
+
+model Pago {
+  id       Int      @id @default(autoincrement())
+  quota    Float
+  payment  Float
+  debt     Float
+  // other fields
+}
+
+// Add other models for UIPC, etc.

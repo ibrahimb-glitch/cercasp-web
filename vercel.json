@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd ../.. && yarn install --ignore-engines && yarn turbo run build --filter=@cercasp/web",
+  "installCommand": "yarn install --ignore-engines",
+  "outputDirectory": "apps/web/.next",
+  "framework": "nextjs",
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./apps/web/"
+}

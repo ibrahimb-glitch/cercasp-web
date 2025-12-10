@@ -1,0 +1,144 @@
+{
+  "id": "36dbtUPkicqIA8ELv3vA3sIOO5j",
+  "version": "1",
+  "turboVersion": "2.6.3",
+  "monorepo": true,
+  "globalCacheInputs": {
+    "rootKey": "I can’t see ya, but I know you’re here",
+    "files": {
+      ".vercel/.env.preview.local": "aab4504c6d75ff26f9f265833bfefafd9cb2a25d"
+    },
+    "hashOfExternalDependencies": "61d95395fe90cb3e",
+    "hashOfInternalDependencies": "",
+    "environmentVariables": {
+      "specified": {
+        "env": [],
+        "passThroughEnv": null
+      },
+      "configured": [],
+      "inferred": [
+        "VERCEL_TARGET_ENV=5975cf1bba432391c94667f5886225f69377c0aa8b9fa21fddfb21c89bcf9092"
+      ],
+      "passthrough": null
+    },
+    "engines": null
+  },
+  "execution": {
+    "command": "turbo run build --filter=@cercasp/web",
+    "repoPath": "",
+    "success": 1,
+    "failed": 0,
+    "cached": 0,
+    "attempted": 1,
+    "startTime": 1765339573054,
+    "endTime": 1765339609745,
+    "exitCode": 0
+  },
+  "packages": [
+    "@cercasp/web"
+  ],
+  "envMode": "strict",
+  "frameworkInference": true,
+  "tasks": [
+    {
+      "taskId": "@cercasp/web#build",
+      "task": "build",
+      "package": "@cercasp/web",
+      "hash": "904ce70810111fdd",
+      "inputs": {
+        ".gitignore": "e985853ed84acf10f62f639a4733083229c5a55d",
+        "app/admin/dashboard/page.tsx": "9b2318e2349a449da16cd44f7800a1842141ccd2",
+        "app/admin/login/page.tsx": "2bbcb75d886a59fd37d5d69f7c8bca979897052d",
+        "app/area-familiar/page.tsx": "b6bd94dfda77d1a4646b19b1326baf03c922c700",
+        "app/contact/page.tsx": "be072bae522d6e3ccde3c8aac172795efaabda49",
+        "app/globals.css": "e7192093ccbebd4d5b2c098ae45753ed6749f8de",
+        "app/layout.tsx": "e0aa75dce4fe2964cb3f2a0a2e509365fce95397",
+        "app/page.tsx": "4e730e883f39d56a7d9972cbb15d852f61635e93",
+        "components/ArchitectureDiagram.tsx": "e96573565eea3f4902921e523b6ebec3ccf5bc9c",
+        "components/AreaFamiliar.tsx": "f71ce7eca703372a2115b788b840e7ebf9cf4369",
+        "components/Contacto.tsx": "653e2da65968e977b5b38761727585129db4a0a0",
+        "components/Equipo.tsx": "139a2b71d4d4a4146f4a85b345209f7a322d9918",
+        "components/Header.tsx": "bd81b97fb93c05923bf977b470e386d3589e111c",
+        "components/Hero.tsx": "5fba6b27d3046aea6134092b130f58bddbd3adee",
+        "components/Nosotros.tsx": "ae64c164191f56638f5e02f43b446c0ba8883661",
+        "components/PIPC.tsx": "fac1720783964e5c8dbeb639cb14a1c633f396e7",
+        "components/Servicios.tsx": "e0f61dba840e333f35c667d708e601b26ce8e9dc",
+        "components/Transparencia.tsx": "024fa3d8dc425165a44b294c338f12e3186b2833",
+        "lib/auth.ts": "96ac37f3d63859950415a52762acf826eaff9695",
+        "lib/utils.ts": "551d29c06d3cfad6f4e46e2ac2d076cf61e9bd10",
+        "middleware.ts": "d5a2f5a82bb4dd540abaecb7cd14dd59a289b841",
+        "next-env.d.ts": "830fb594ca2970a827555c28a253b097367e08d8",
+        "next.config.js": "2d93728cee6dbf9dac3d4bf0b2e32e6655939fb6",
+        "package.json": "9512829fe055c7719c496847cebf5219641c822b",
+        "postcss.config.js": "96bb01e7dd1fcd9b131ec736a3be2570721d4c8c",
+        "tailwind.config.js": "4f95ff117087058c4425c54109d7be74c70d7fd6",
+        "tsconfig.json": "f619795e7255f58364626b18d537d91d8911db62",
+        "vercel.json": "a0b5435fbef9640f8826c75704e427f965df11fb"
+      },
+      "hashOfExternalDependencies": "d3f784b12dc6b142",
+      "cache": {
+        "local": false,
+        "remote": false,
+        "status": "MISS",
+        "timeSaved": 0
+      },
+      "command": "next build",
+      "cliArguments": [],
+      "outputs": [
+        ".next/**",
+        "dist/**"
+      ],
+      "excludedOutputs": [
+        ".next/cache/**"
+      ],
+      "logFile": "apps/web/.turbo/turbo-build.log",
+      "directory": "apps/web",
+      "dependencies": [
+        "@cercasp/ui#build"
+      ],
+      "dependents": [],
+      "with": [],
+      "resolvedTaskDefinition": {
+        "outputs": [
+          "!.next/cache/**",
+          ".next/**",
+          "dist/**"
+        ],
+        "cache": true,
+        "dependsOn": [
+          "^build"
+        ],
+        "inputs": [],
+        "outputLogs": "full",
+        "persistent": false,
+        "interruptible": false,
+        "env": [],
+        "passThroughEnv": null,
+        "interactive": false
+      },
+      "expandedOutputs": [],
+      "framework": "nextjs",
+      "envMode": "strict",
+      "environmentVariables": {
+        "specified": {
+          "env": [],
+          "passThroughEnv": null
+        },
+        "configured": [],
+        "inferred": [],
+        "passthrough": null
+      },
+      "execution": {
+        "startTime": 1765339573265,
+        "endTime": 1765339609744,
+        "exitCode": 0
+      }
+    }
+  ],
+  "user": "",
+  "scm": {
+    "type": "git",
+    "sha": null,
+    "branch": null
+  }
+}
