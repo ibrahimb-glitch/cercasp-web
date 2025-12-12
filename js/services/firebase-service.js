@@ -22,7 +22,7 @@ class FirebaseService {
   async init(config) {
     try {
       if (!config || !config.apiKey || !config.projectId) {
-        throw new Error('Configuración Firebase incompleta. Verifica las variables de entorno.');
+        throw new Error('Configuración Firebase incompleta. Verifica las variables de entorno. / Incomplete Firebase configuration. Check environment variables.');
       }
 
       // Inicializar Firebase

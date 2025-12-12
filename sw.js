@@ -125,17 +125,15 @@ async function syncOfflineData() {
 
     for (const item of offlineQueue) {
       try {
-        // Enviar a Firestore
-        await fetch('/api/sync', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(item)
-        });
-
-        // Eliminar de la cola
-        await deleteFromStore(db, 'offline_queue', item.id);
+        // TODO: Implementar sincronización directa con Firebase Firestore
+        // Por ahora, registrar para desarrollo
+        console.log('[SW] Item pendiente de sincronización:', item);
+        
+        // En producción, aquí se debe usar Firebase SDK para escribir directamente
+        // Ejemplo: firebase.firestore().collection(item.collection).add(item.data)
+        
+        // Eliminar de la cola después de sincronizar
+        // await deleteFromStore(db, 'offline_queue', item.id);
       } catch (error) {
         console.error('[SW] Error al sincronizar item:', error);
       }

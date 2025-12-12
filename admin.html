@@ -248,9 +248,31 @@
   <script>
     // Inicialización
     document.addEventListener('DOMContentLoaded', async () => {
-      // TODO: Cargar configuración Firebase desde variables de entorno
-      // Por seguridad, las credenciales NO deben estar hardcodeadas aquí
-      console.log('[Admin] Esperando configuración Firebase...');
+      // IMPORTANTE: Configuración Firebase debe cargarse desde variables de entorno
+      // NO incluir credenciales hardcodeadas en el código
+      
+      // Ejemplo de carga desde window.ENV (debe ser inyectado por servidor o build process):
+      /*
+      if (window.ENV && window.ENV.FIREBASE_API_KEY) {
+        const firebaseConfig = {
+          apiKey: window.ENV.FIREBASE_API_KEY,
+          authDomain: window.ENV.FIREBASE_AUTH_DOMAIN,
+          projectId: window.ENV.FIREBASE_PROJECT_ID,
+          storageBucket: window.ENV.FIREBASE_STORAGE_BUCKET,
+          messagingSenderId: window.ENV.FIREBASE_MESSAGING_SENDER_ID,
+          appId: window.ENV.FIREBASE_APP_ID
+        };
+        
+        await firebaseService.init(firebaseConfig);
+        await authService.init();
+        console.log('[Admin] Firebase inicializado correctamente');
+      } else {
+        console.error('[Admin] Credenciales Firebase no encontradas en window.ENV');
+      }
+      */
+      
+      console.log('[Admin] Sistema esperando configuración Firebase desde variables de entorno');
+      console.log('[Admin] Ver README_VANILLA.md para instrucciones de configuración');
       
       // Login form handler
       const loginForm = document.getElementById('login-form');

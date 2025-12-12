@@ -17,6 +17,8 @@ class EncryptionService {
   /**
    * Inicializar el servicio con una clave de encriptación
    * @param {string} keyString - Clave de encriptación (debe ser de 256 bits)
+   * NOTA: Usando salt fijo para consistencia. En producción de alta seguridad,
+   * considerar salts por-registro con gestión de claves más compleja.
    */
   async init(keyString) {
     try {
@@ -30,6 +32,8 @@ class EncryptionService {
       );
 
       // Usar salt fijo para que la misma clave siempre produzca el mismo resultado
+      // SECURITY NOTE: Salt fijo permite encriptación determinística pero reduce
+      // resistencia contra rainbow tables. Trade-off aceptable para este caso de uso.
       const salt = this.encoder.encode('cercasp-2023-salt');
 
       // Derivar clave AES-GCM

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sin Conexión - CERCASP</title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/layout.css">
+</head>
+<body>
+  <div class="container" style="display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center;">
+    <div class="card" style="max-width: 500px;">
+      <div class="card-body">
+        <h1 style="color: var(--color-primary-gold); font-size: var(--font-size-4xl); margin-bottom: var(--spacing-lg);">
+          📡
+        </h1>
+        <h2 class="card-title">Sin Conexión</h2>
+        <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl);">
+          No se pudo establecer conexión con el servidor. Por favor verifica tu conexión a internet.
+        </p>
+        <button onclick="window.location.reload()" class="btn btn-primary">
+          Reintentar
+        </button>
+        <p style="margin-top: var(--spacing-lg); font-size: var(--font-size-sm); color: var(--color-text-muted);">
+          Algunos datos pueden estar disponibles en modo offline si previamente cargaste la aplicación.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -136,14 +136,20 @@ class AuthService {
 
   /**
    * Verificar si IP está en rangos permitidos
+   * NOTA: Esta es una implementación simplificada. En producción,
+   * usar una librería especializada como 'ip-range-check' o 'ipaddr.js'
+   * para validación CIDR robusta y prevenir bypass.
    */
   isIPInRanges(ip, ranges) {
-    // Implementación simplificada - en producción usar librería especializada
+    // TODO: Implementar validación CIDR robusta con librería especializada
+    // Esta implementación es básica y solo para desarrollo
+    console.warn('[AuthService] IP validation using simplified logic. Implement robust CIDR validation for production.');
+    
     for (const range of ranges) {
       if (range.includes('/')) {
-        // Es un rango CIDR
+        // Es un rango CIDR - requiere validación robusta
         const [network, bits] = range.split('/');
-        // Validación simplificada
+        // Validación simplificada - REEMPLAZAR EN PRODUCCIÓN
         if (ip.startsWith(network.split('.').slice(0, 2).join('.'))) {
           return true;
         }
