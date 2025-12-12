@@ -95,9 +95,9 @@ Si deseas que la API esté en `api.cercasp.org`:
 
 | Tipo | Host | Valor | TTL |
 |------|------|-------|-----|
-| CNAME | api | cercasp-api-xxx-uc.a.run.app | 3600 |
+| CNAME | api | [tu-url].run.app | 3600 |
 
-> Reemplaza `cercasp-api-xxx-uc.a.run.app` con la URL real de tu Cloud Run.
+> Reemplaza `[tu-url].run.app` con la URL real de tu Cloud Run (ejemplo: `cercasp-api-abc123.run.app`).
 
 ### 5.2 En Google Cloud Run:
 
@@ -119,7 +119,7 @@ Aquí está la configuración completa de DNS en Squarespace:
 |------|------|-------|-----------|
 | A | @ | 76.76.21.21 | Dominio raíz a Vercel |
 | CNAME | www | cname.vercel-dns.com | www a Vercel |
-| CNAME | api | cercasp-api-xxx.run.app | API en Cloud Run (opcional) |
+| CNAME | api | [tu-url].run.app | API en Cloud Run (opcional) |
 
 ---
 
@@ -153,7 +153,15 @@ Una vez configurado el dominio, actualiza las variables de entorno:
 
 ```
 NEXT_PUBLIC_SITE_URL=https://cercasp.org
-NEXT_PUBLIC_API_URL=https://api.cercasp.org (o la URL de Cloud Run)
+```
+
+Para la API, usa una de estas opciones:
+```
+# Si configuraste el subdominio api.cercasp.org:
+NEXT_PUBLIC_API_URL=https://api.cercasp.org
+
+# O usa directamente la URL de Cloud Run:
+NEXT_PUBLIC_API_URL=https://cercasp-api-[tu-id].run.app
 ```
 
 ### En Cloud Run (si usas api.cercasp.org):
