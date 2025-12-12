@@ -64,11 +64,27 @@ self.addEventListener('activate', (event) => {
 
 // Interceptar peticiones de red
 self.addEventListener('fetch', (event) => {
-  // Ignorar peticiones a APIs externas
-  if (event.request.url.includes('firebaseio.com') ||
-      event.request.url.includes('googleapis.com') ||
-      event.request.url.includes('gstatic.com')) {
-    return;
+  // Ignorar peticiones a APIs externas - usar validación de hostname segura
+  try {
+    const url = new URL(event.request.url);
+    const externalHosts = [
+      'firebaseio.com',
+      'googleapis.com',
+      'gstatic.com',
+      'firebaseapp.com'
+    ];
+    
+    // Verificar si el hostname termina con alguno de los dominios externos
+    const isExternalAPI = externalHosts.some(host => {
+      return url.hostname === host || url.hostname.endsWith('.' + host);
+    });
+    
+    if (isExternalAPI) {
+      return;
+    }
+  } catch (e) {
+    // URL inválida, continuar con el fetch normal
+    console.warn('[SW] Invalid URL:', event.request.url);
   }
 
   event.respondWith(
