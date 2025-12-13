@@ -1,0 +1,158 @@
+/**
+ * CERCASP Design System - Variables CSS
+ * Sistema de variables para mantener consistencia visual
+ */
+
+:root {
+  /* === Colores Principales === */
+  --color-primary-gold: #D4AF37;
+  --color-primary-gold-light: #E4BF47;
+  --color-primary-gold-dark: #C49F27;
+  
+  /* === Colores de Fondo === */
+  --color-bg-dark: #050505;
+  --color-bg-panel: #111111;
+  --color-bg-card: rgba(20, 20, 20, 0.7);
+  --color-bg-hover: rgba(30, 30, 30, 0.8);
+  
+  /* === Colores de Texto === */
+  --color-text-primary: #e5e5e5;
+  --color-text-secondary: #a0a0a0;
+  --color-text-muted: #707070;
+  --color-text-inverse: #1a1a1a;
+  
+  /* === Colores de Estado === */
+  --color-success: #22c55e;
+  --color-success-dark: #16a34a;
+  --color-warning: #eab308;
+  --color-warning-dark: #ca8a04;
+  --color-error: #ef4444;
+  --color-error-dark: #dc2626;
+  --color-info: #3b82f6;
+  --color-info-dark: #2563eb;
+  
+  /* === Colores de Borde === */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-focus: rgba(212, 175, 55, 0.5);
+  --color-border-error: rgba(239, 68, 68, 0.5);
+  
+  /* === Tipografía === */
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Montserrat', sans-serif;
+  --font-mono: 'Courier New', monospace;
+  
+  /* === Tamaños de Fuente === */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+  
+  /* === Pesos de Fuente === */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* === Espaciado === */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  --spacing-3xl: 4rem;     /* 64px */
+  
+  /* === Bordes === */
+  --border-radius-sm: 0.25rem;  /* 4px */
+  --border-radius-md: 0.5rem;   /* 8px */
+  --border-radius-lg: 0.75rem;  /* 12px */
+  --border-radius-xl: 1rem;     /* 16px */
+  --border-radius-full: 9999px;
+  
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 4px;
+  
+  /* === Sombras === */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.3);
+  
+  /* === Glassmorphism === */
+  --glass-bg: rgba(20, 20, 20, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: 12px;
+  
+  /* === Transiciones === */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+  
+  /* === Z-Index === */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+  
+  /* === Breakpoints (para uso en JS) === */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  
+  /* === Anchos Máximos === */
+  --max-width-sm: 640px;
+  --max-width-md: 768px;
+  --max-width-lg: 1024px;
+  --max-width-xl: 1280px;
+  --max-width-2xl: 1536px;
+  --max-width-full: 100%;
+  
+  /* === Alturas === */
+  --header-height: 4rem;
+  --footer-height: 3rem;
+  
+  /* === Accesibilidad === */
+  --focus-ring: 0 0 0 3px var(--color-border-focus);
+  --focus-ring-error: 0 0 0 3px var(--color-border-error);
+  
+  /* === Opacidad === */
+  --opacity-disabled: 0.5;
+  --opacity-hover: 0.8;
+}
+
+/* === Dark Mode (por defecto) === */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+/* === Modo de Alto Contraste === */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: rgba(255, 255, 255, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* === Reducción de Movimiento === */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-base: 0ms;
+    --transition-slow: 0ms;
+  }
+}

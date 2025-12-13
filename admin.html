@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Panel Administrativo - CERCASP</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/accessibility.css">
+  
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <!-- Login Screen -->
+  <div id="login-screen">
+    <div class="container" style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+      <div class="card" style="max-width: 450px; width: 100%;">
+        <div class="card-header" style="text-align: center;">
+          <h1 class="card-title" style="color: var(--color-primary-gold); font-size: var(--font-size-3xl);">CERCASP</h1>
+          <p>Panel Administrativo</p>
+        </div>
+        <div class="card-body">
+          <form id="login-form">
+            <div class="form-group">
+              <label for="email" class="form-label required">Email</label>
+              <input type="email" id="email" name="email" class="form-control" required autocomplete="email">
+            </div>
+            
+            <div class="form-group">
+              <label for="password" class="form-label required">Contraseña</label>
+              <input type="password" id="password" name="password" class="form-control" required autocomplete="current-password">
+            </div>
+
+            <div id="login-error" class="alert alert-error" style="display: none;"></div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;" id="login-btn">
+              Iniciar Sesión
+            </button>
+          </form>
+
+          <p style="text-align: center; margin-top: var(--spacing-lg); color: var(--color-text-secondary); font-size: var(--font-size-sm);">
+            <a href="#" id="forgot-password-link">¿Olvidaste tu contraseña?</a>
+          </p>
+        </div>
+        <div class="card-footer" style="text-align: center; color: var(--color-text-secondary); font-size: var(--font-size-sm);">
+          <p>Sistema protegido por autenticación de dos factores</p>
+          <p>RFC: CRC2302227N7</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard (Hidden until authenticated) -->
+  <div id="dashboard" class="hidden">
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <aside class="sidebar" role="navigation">
+        <div class="sidebar-header">
+          <h2 style="color: var(--color-primary-gold);">CERCASP</h2>
+          <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary);" id="user-role">Cargando...</p>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Navegación del panel">
+          <a href="#dashboard-view" class="sidebar-link active" data-view="dashboard">
+            <span>📊</span> Dashboard
+          </a>
+          <a href="#patients-view" class="sidebar-link" data-view="patients">
+            <span>👥</span> Pacientes
+          </a>
+          <a href="#medical-view" class="sidebar-link" data-view="medical">
+            <span>🏥</span> Expedientes Médicos
+          </a>
+          <a href="#psychology-view" class="sidebar-link" data-view="psychology">
+            <span>🧠</span> Expedientes Psicológicos
+          </a>
+          <a href="#finance-view" class="sidebar-link" data-view="finance">
+            <span>💰</span> Finanzas
+          </a>
+          <a href="#compliance-view" class="sidebar-link" data-view="compliance">
+            <span>📋</span> Cumplimiento NOM
+          </a>
+          <a href="#logs-view" class="sidebar-link" data-view="logs" id="logs-link" style="display: none;">
+            <span>📜</span> Logs del Sistema
+          </a>
+        </nav>
+
+        <div style="margin-top: auto; padding-top: var(--spacing-xl); border-top: var(--border-width-thin) solid var(--color-border);">
+          <button id="logout-btn" class="btn btn-secondary" style="width: 100%;">
+            Cerrar Sesión
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Dashboard View -->
+        <div id="dashboard-view" class="content-view">
+          <h1>Dashboard</h1>
+          
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-value" id="stat-patients-total">32</div>
+              <div class="stat-label">Pacientes Activos</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-scholarships">10</div>
+              <div class="stat-label">Becados</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-capacity">100%</div>
+              <div class="stat-label">Ocupación</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-monthly-income">$25,600</div>
+              <div class="stat-label">Ingresos Mensuales</div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2" style="margin-top: var(--spacing-xl);">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Distribución por Fase</h3>
+              </div>
+              <div class="card-body">
+                <canvas id="phases-chart" width="400" height="300"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Actividad Reciente</h3>
+              </div>
+              <div class="card-body">
+                <ul id="recent-activity" style="list-style: none; padding: 0;">
+                  <li style="padding: var(--spacing-sm) 0; border-bottom: var(--border-width-thin) solid var(--color-border);">
+                    Sistema en línea - Esperando datos...
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Patients View -->
+        <div id="patients-view" class="content-view hidden">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+            <h1>Gestión de Pacientes</h1>
+            <button class="btn btn-primary" id="add-patient-btn">
+              + Nuevo Paciente
+            </button>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <p>Módulo de gestión de pacientes. Aquí se mostrará la tabla de pacientes con funcionalidad CRUD completa.</p>
+              <p style="color: var(--color-text-secondary);">Este módulo requiere autenticación y permisos adecuados.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Medical View -->
+        <div id="medical-view" class="content-view hidden">
+          <h1>Expedientes Médicos</h1>
+          <div class="card">
+            <div class="card-body">
+              <p>Expedientes clínicos con formato SOAP (NOM-004-SSA3-2012).</p>
+              <p style="color: var(--color-text-secondary);">Datos sensibles encriptados con AES-256-GCM.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Psychology View -->
+        <div id="psychology-view" class="content-view hidden">
+          <h1>Expedientes Psicológicos</h1>
+          <div class="card">
+            <div class="card-body">
+              <p>Seguimiento del programa de 12 Pasos y evaluaciones psicológicas.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Finance View -->
+        <div id="finance-view" class="content-view hidden">
+          <h1>Gestión Financiera</h1>
+          <div class="card">
+            <div class="card-body">
+              <p>Control de cuotas, becas y reportes financieros.</p>
+              <p><strong>Cuota semanal máxima:</strong> $800 MXN</p>
+              <p><strong>Becas disponibles:</strong> 10 al 100%</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compliance View -->
+        <div id="compliance-view" class="content-view hidden">
+          <h1>Cumplimiento Normativo</h1>
+          <div class="card">
+            <div class="card-body">
+              <h3>Checklist CONASAMA 2025</h3>
+              <ul>
+                <li>✓ NOM-028-SSA2-2009 (Tratamiento de Adicciones)</li>
+                <li>✓ NOM-004-SSA3-2012 (Expediente Clínico)</li>
+                <li>✓ LFPDPPP (Protección de Datos Personales)</li>
+                <li>✓ Ley General de Salud (Art. 192)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logs View (Founder only) -->
+        <div id="logs-view" class="content-view hidden">
+          <h1>Logs del Sistema</h1>
+          <div class="alert alert-info">
+            <strong>Solo Fundador:</strong> Los logs son inmutables y verificados con checksums SHA-256.
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <p>Historial completo de acciones en el sistema.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/config/app-config.js"></script>
+  <script src="/js/services/firebase-service.js"></script>
+  <script src="/js/services/auth-service.js"></script>
+  <script src="/js/services/encryption-service.js"></script>
+  <script src="/js/services/storage-service.js"></script>
+  <script src="/js/utils/validators.js"></script>
+  <script src="/js/utils/sanitizers.js"></script>
+  
+  <script>
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', async () => {
+      // IMPORTANTE: Configuración Firebase debe cargarse desde variables de entorno
+      // NO incluir credenciales hardcodeadas en el código
+      
+      // Ejemplo de carga desde window.ENV (debe ser inyectado por servidor o build process):
+      /*
+      if (window.ENV && window.ENV.FIREBASE_API_KEY) {
+        const firebaseConfig = {
+          apiKey: window.ENV.FIREBASE_API_KEY,
+          authDomain: window.ENV.FIREBASE_AUTH_DOMAIN,
+          projectId: window.ENV.FIREBASE_PROJECT_ID,
+          storageBucket: window.ENV.FIREBASE_STORAGE_BUCKET,
+          messagingSenderId: window.ENV.FIREBASE_MESSAGING_SENDER_ID,
+          appId: window.ENV.FIREBASE_APP_ID
+        };
+        
+        await firebaseService.init(firebaseConfig);
+        await authService.init();
+        console.log('[Admin] Firebase inicializado correctamente');
+      } else {
+        console.error('[Admin] Credenciales Firebase no encontradas en window.ENV');
+      }
+      */
+      
+      console.log('[Admin] Sistema esperando configuración Firebase desde variables de entorno');
+      console.log('[Admin] Ver README_VANILLA.md para instrucciones de configuración');
+      
+      // Login form handler
+      const loginForm = document.getElementById('login-form');
+      const loginError = document.getElementById('login-error');
+      const loginBtn = document.getElementById('login-btn');
+      
+      loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        loginError.style.display = 'none';
+        loginBtn.disabled = true;
+        loginBtn.textContent = 'Iniciando sesión...';
+        
+        try {
+          // TODO: Implementar autenticación real con Firebase
+          // await authService.signIn(email, password);
+          
+          // Simulación para demostración
+          setTimeout(() => {
+            alert('Demo: Autenticación pendiente de configuración Firebase');
+            loginBtn.disabled = false;
+            loginBtn.textContent = 'Iniciar Sesión';
+          }, 1000);
+        } catch (error) {
+          loginError.textContent = error.message;
+          loginError.style.display = 'block';
+          loginBtn.disabled = false;
+          loginBtn.textContent = 'Iniciar Sesión';
+        }
+      });
+
+      // Logout handler
+      document.getElementById('logout-btn').addEventListener('click', async () => {
+        // TODO: Implementar logout
+        window.location.reload();
+      });
+
+      // Navigation
+      document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          // Update active link
+          document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+          
+          // Show corresponding view
+          const view = link.dataset.view;
+          document.querySelectorAll('.content-view').forEach(v => v.classList.add('hidden'));
+          document.getElementById(`${view}-view`).classList.remove('hidden');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
