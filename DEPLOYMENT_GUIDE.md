@@ -160,8 +160,25 @@ git push origin main  # Activa GitHub Actions automáticamente
 
 ## Próximos pasos después del despliegue
 
-1. Configurar dominio personalizado en Vercel
-2. Configurar SSL/HTTPS
+1. ✅ Configurar dominio personalizado en Vercel - Ver [DOMAIN_SETUP_GUIDE.md](./docs/DOMAIN_SETUP_GUIDE.md)
+2. ✅ Configurar SSL/HTTPS - Automático con Vercel
 3. Agregar monitoreo y alertas
 4. Configurar backups automáticos de base de datos
 5. Implementar autenticación en el frontend
+
+---
+
+## Configuración del Dominio cercasp.org
+
+Para conectar tu dominio `cercasp.org` (gestionado por Squarespace) con tu aplicación:
+
+📖 **Consulta la guía completa:** [docs/DOMAIN_SETUP_GUIDE.md](./docs/DOMAIN_SETUP_GUIDE.md)
+
+### Resumen rápido:
+
+1. **En Vercel:** Settings → Domains → Add `cercasp.org`
+2. **En Squarespace DNS:**
+   - Registro A: `@` → `76.76.21.21`
+   - Registro CNAME: `www` → `cname.vercel-dns.com`
+3. **Esperar propagación DNS** (5 min - 48 horas)
+4. **SSL se configura automáticamente** por Vercel
