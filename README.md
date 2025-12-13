@@ -4,6 +4,14 @@ Overview: CERCASP-OS | RFC CRC2302227N7 | Fundado 22/02/2023
 
 This is the monorepo for the CERCASP website.
 
+---
+
+## 🚀 ¿Quieres poner cercasp.org en funcionamiento?
+
+**[📖 Ver Guía Rápida de Despliegue](docs/QUICK_START_DEPLOYMENT.md)** - Sigue 5 pasos simples para conectar tu dominio con Vercel.
+
+---
+
 ## Apps
 
 - `apps/web`: Next.js 15 Frontend
