@@ -56,7 +56,7 @@
 |-------|-------|
 | Tipo | **A** |
 | Host | **@** |
-| Datos/Valor | **76.76.21.21** |
+| Datos/Valor | **76.76.21.21** (IP de Vercel*) |
 | TTL | 3600 (o por defecto) |
 
 Haz clic en **Agregar** o **Save**
@@ -75,6 +75,8 @@ Haz clic en **Agregar** o **Save**
 ### 3.3 Eliminar registros conflictivos (si existen)
 
 Si ves otros registros A o CNAME apuntando a otros lugares, elimínalos.
+
+> **\* Nota sobre la IP:** La IP `76.76.21.21` es la IP estándar de Vercel. Si Vercel te muestra una IP diferente en el Paso 2, usa la que te indique Vercel.
 
 ---
 
