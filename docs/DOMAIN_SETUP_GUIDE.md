@@ -11,6 +11,56 @@ Esta guía te ayudará a conectar tu dominio `cercasp.org` (gestionado por Squar
 
 ---
 
+## Paso 0: Crear el Proyecto en Vercel (Si no tienes proyecto aún)
+
+Si aún no has desplegado tu aplicación en Vercel, sigue estos pasos primero:
+
+### Opción A: Desde el Dashboard de Vercel (Recomendado)
+
+1. Ve a [vercel.com/new](https://vercel.com/new)
+2. Haz clic en **"Import Git Repository"**
+3. Conecta tu cuenta de GitHub si no lo has hecho
+4. Busca y selecciona el repositorio `cercasp-web`
+5. Configura el proyecto:
+   - **Framework Preset:** Next.js
+   - **Root Directory:** `apps/web`
+   - **Build Command:** `cd ../.. && yarn install --ignore-engines && yarn turbo run build --filter=@cercasp/web`
+   - **Install Command:** `yarn install --ignore-engines`
+   - **Output Directory:** `.next`
+6. En **Environment Variables**, agrega:
+   - `NEXT_PUBLIC_API_URL`: La URL de tu API (ej: `https://cercasp-api-xxx.run.app`)
+7. Haz clic en **Deploy**
+8. Espera a que termine el despliegue (puede tardar unos minutos)
+
+### Opción B: Usando Vercel CLI
+
+```bash
+# Instalar Vercel CLI globalmente
+npm install -g vercel
+
+# En el directorio del proyecto
+cd /ruta/a/cercasp-web
+vercel
+
+# Responde a las preguntas:
+# - Set up and deploy? → Yes
+# - Which scope? → Tu cuenta
+# - Link to existing project? → No
+# - Project name? → cercasp-web
+# - In which directory is your code? → apps/web
+# - Override settings? → Yes
+# - Build Command? → yarn turbo run build --filter=@cercasp/web
+# - Output Directory? → apps/web/.next
+# - Install Command? → yarn install --ignore-engines
+
+# Para desplegar a producción
+vercel --prod
+```
+
+Una vez desplegado, Vercel te dará una URL como `cercasp-web.vercel.app`. Guarda esta URL.
+
+---
+
 ## Paso 1: Agregar el Dominio en Vercel
 
 ### 1.1 Accede a tu proyecto en Vercel
